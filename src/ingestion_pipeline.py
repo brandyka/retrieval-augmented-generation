@@ -1,10 +1,16 @@
 from ingestions.data_loader import DataLoader
 from chunking.data_splitter import Chunking
 from embedding.embedder import Embedding
+from dotenv import load_dotenv
 import os
 
+load_dotenv()
+
+DATA_FOLDER = os.getenv("DATA_FOLDER")
+FILE_NAME = os.getenv("FILE_NAME")
+
 SRC_DIR = os.path.dirname(os.path.abspath(__file__))
-DOCUMENT_PATH = os.path.join(SRC_DIR, "data", "company_profile.pdf")
+DOCUMENT_PATH = os.path.join(SRC_DIR, DATA_FOLDER, FILE_NAME)
 
 def load_document(document_path):
     load_document = DataLoader(document_path)
