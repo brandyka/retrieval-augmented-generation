@@ -1,0 +1,8 @@
+python-dotenv
+sentence-transformers
+langchain-community 
+pypdf
+langchain-text-splitters
+langchain-experimental
+langchain-classic
+langchain-chroma
