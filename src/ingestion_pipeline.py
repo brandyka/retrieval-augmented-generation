@@ -4,13 +4,6 @@ from embedding.embedder import Embedding
 from dotenv import load_dotenv
 import os
 
-load_dotenv()
-
-DATA_FOLDER = os.getenv("DATA_FOLDER")
-FILE_NAME = os.getenv("FILE_NAME")
-
-SRC_DIR = os.path.dirname(os.path.abspath(__file__))
-DOCUMENT_PATH = os.path.join(SRC_DIR, DATA_FOLDER, FILE_NAME)
 
 def load_document(document_path):
     load_document = DataLoader(document_path)
@@ -36,7 +29,7 @@ def chunking_document(document, type=None, chunk_size: int = None, overlap: int 
 
 def save_to_vector_db(chunks):
     docs_embedder = Embedding(chunks)
-    vector_db = docs_embedder.save_to_db()
+    vector_db = docs_embedder.hnsw()
 
     return vector_db
 

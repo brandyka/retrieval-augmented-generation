@@ -6,3 +6,4 @@ langchain-text-splitters
 langchain-experimental
 langchain-classic
 langchain-chroma
+rank-bm25

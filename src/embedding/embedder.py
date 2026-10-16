@@ -6,11 +6,7 @@ class Embedding:
     def __init__(self, documents ):
         self.documents = documents
 
-    def embedder(self):
-        embeddings = model.embed_documents(self.documents)
-        return embeddings
-    
-    def save_to_db(self):
+    def hnsw(self):
             persist_directory = os.path.join(
                 os.getcwd(),
                 "vectordb"
@@ -28,6 +24,14 @@ class Embedding:
             vector_db.add_documents(self.documents)
 
             return vector_db
+
+
+
+    def ivf():
+         pass
+
+    def pq():
+         pass
 
 #Embedding docs
 #Embedding = Embedding(docs)

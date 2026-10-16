@@ -1,5 +1,6 @@
 from models.embedding_model import model
 from langchain_chroma import Chroma
+from langchain_community.retrievers import BM25Retriever
 import os
 
 SRC_DIR = os.path.dirname(
@@ -10,8 +11,9 @@ VECTOR_DB_DIR = os.path.join(SRC_DIR, "vectordb")
 
 
 class Retrieval:
-    def __init__(self, query):
+    def __init__(self, query, doc: list = None):
         self.query = query
+        self.doc = doc
 
     def similarity_search(self, k=3):
         vector_db = Chroma(
@@ -30,5 +32,10 @@ class Retrieval:
         )
 
         print("Retrieved documents:", len(results))
-
         return results
+
+    def keyword_search(self):
+        retriever = BM25Retriever.from_documents(self.doc)
+        return retriever
+
+        
